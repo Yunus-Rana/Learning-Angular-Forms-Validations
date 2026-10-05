@@ -1,0 +1,247 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.page-shell {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  overflow: hidden;
+  place-items: center;
+  padding: 48px 24px;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgb(190 224 216 / 55%), transparent 34%),
+    radial-gradient(ellipse at 88% 88%, rgb(215 205 239 / 50%), transparent 34%),
+    #f5f7f4;
+}
+
+.page-shell::before,
+.page-shell::after {
+  position: absolute;
+  z-index: -1;
+  width: 260px;
+  aspect-ratio: 1;
+  border: 1px solid rgb(75 112 102 / 12%);
+  border-radius: 50%;
+  content: '';
+}
+
+.page-shell::before {
+  top: -125px;
+  right: -78px;
+  box-shadow:
+    0 0 0 24px rgb(75 112 102 / 4%),
+    0 0 0 48px rgb(75 112 102 / 3%);
+}
+
+.page-shell::after {
+  bottom: -155px;
+  left: -98px;
+  width: 320px;
+  border-color: rgb(110 91 145 / 12%);
+  box-shadow:
+    0 0 0 24px rgb(110 91 145 / 4%),
+    0 0 0 48px rgb(110 91 145 / 3%);
+}
+
+.form-card {
+  width: min(100%, 480px);
+  padding: 42px;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 24px;
+  background: rgb(255 255 255 / 88%);
+  box-shadow:
+    0 28px 80px rgb(39 55 49 / 11%),
+    0 4px 12px rgb(39 55 49 / 5%);
+  backdrop-filter: blur(16px);
+  animation: card-arrive 550ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.form-header {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: #48776a;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6da591;
+  box-shadow: 0 0 0 4px rgb(109 165 145 / 14%);
+  content: '';
+}
+
+.form-header h1 {
+  margin: 0;
+  color: #202b27;
+  font-size: clamp(2rem, 8vw, 2.45rem);
+  font-weight: 720;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+form {
+  display: grid;
+  gap: 21px;
+}
+
+.field-group {
+  display: grid;
+  gap: 8px;
+}
+
+.field-group label {
+  color: #34443e;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.field-group input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 15px;
+  border: 1px solid #dce4df;
+  border-radius: 11px;
+  outline: none;
+  background: #fbfcfb;
+  color: #202b27;
+  font: inherit;
+  font-size: 0.93rem;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.field-group input::placeholder {
+  color: #a0aca5;
+}
+
+.field-group input:hover {
+  border-color: #b7c9bf;
+}
+
+.field-group input:focus {
+  border-color: #579078;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgb(87 144 120 / 14%);
+}
+
+.error-messages {
+  display: grid;
+  gap: 4px;
+}
+
+.error {
+  margin: 0;
+  color: #b34343;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-top: 7px;
+}
+
+.actions button {
+  min-height: 49px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 680;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.actions button:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.actions .primary {
+  background: #356f5a;
+  color: #fff;
+  box-shadow: 0 7px 15px rgb(53 111 90 / 18%);
+}
+
+.actions .primary:hover:not(:disabled) {
+  background: #2d614e;
+  box-shadow: 0 9px 19px rgb(53 111 90 / 25%);
+}
+
+.actions .primary:disabled {
+  cursor: not-allowed;
+  background: #aabbb2;
+  box-shadow: none;
+}
+
+.actions .secondary {
+  border-color: #dce4df;
+  background: #fff;
+  color: #52625a;
+}
+
+.actions .secondary:hover {
+  border-color: #b7c9bf;
+  background: #f5f8f6;
+}
+
+.actions button:focus-visible {
+  outline: 3px solid rgb(87 144 120 / 35%);
+  outline-offset: 3px;
+}
+
+@keyframes card-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .page-shell {
+    padding: 24px 16px;
+  }
+
+  .form-card {
+    padding: 30px 24px;
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
